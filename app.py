@@ -1187,3 +1187,7 @@ if __name__ == "__main__":
 else:
     with app.app_context():
         init_db()
+
+# Ensure DB exists
+init_db()
+
