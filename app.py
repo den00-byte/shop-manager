@@ -1178,10 +1178,12 @@ def daily_report_export():
 import os
 init_db()
 
-if __name__ == "__main__":
+with app.app_context():
     init_db()
+
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
 else:
-    # This runs automatically when Render/Gunicorn starts the app via WSGI
-    init_db()
+    with app.app_context():
+        init_db()
