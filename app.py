@@ -1179,5 +1179,9 @@ import os
 init_db()
 
 if __name__ == "__main__":
+    init_db()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+else:
+    # This runs automatically when Render/Gunicorn starts the app via WSGI
+    init_db()
